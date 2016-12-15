@@ -8,24 +8,24 @@
 
 ###1.AndroidManifest.xml添加权限：
 
-// 访问网络权限<br>
-uses-permission android:name="android.permission.INTERNET"<br>
-// 往sdcard中写入数据的权限<br>
-uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"<br>
-// 在sdcard中创建/删除文件的权限<br>
-uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"<br>
-// 读取sdcard权限<br>
-uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 读取sdcard权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 ###2.初始化Application操作：
     @Override
-        public void onCreate() {
-            super.onCreate();
-            // @param cacheDisc 设置缓存图片文件的目录
-            // @param resLoading 设置图片下载期间显示的图片
-            // @param resEmpty 设置图片Uri为空或是错误的时候显示的图片
-            // @param resFail 设置图片加载或解码过程中发生错误显示的图片
-            ImageLoaderConfig.initImageLoader(this, Cons.IMAGES_DIR, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+    public void onCreate() {
+        super.onCreate();
+        // @param cacheDisc 设置缓存图片文件的目录
+        // @param resLoading 设置图片下载期间显示的图片
+        // @param resEmpty 设置图片Uri为空或是错误的时候显示的图片
+        // @param resFail 设置图片加载或解码过程中发生错误显示的图片
+        ImageLoaderConfig.initImageLoader(this, Cons.IMAGES_DIR, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
     }
 
 ###3.图片加载用法：
