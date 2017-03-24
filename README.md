@@ -1,12 +1,12 @@
 # Image
-##图片加载框架
+## 图片加载框架
 版本：2.3.5<br>
 作者：西门提督<br>
 日期：2016-12-15
 
-##Image图片加载框架用法如下：
+## Image图片加载框架用法如下：
 
-###1.AndroidManifest.xml添加权限：
+### 1.AndroidManifest.xml添加权限：
 
     <!-- 访问网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +17,7 @@
     <!-- 读取sdcard权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-###2.初始化Application操作：
+### 2.初始化Application操作：
     @Override
     public void onCreate() {
         super.onCreate();
@@ -28,7 +28,7 @@
         ImageLoaderConfig.initImageLoader(this, Cons.IMAGES_DIR, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher);
     }
 
-###3.图片加载用法：
+### 3.图片加载用法：
         public class MainActivity extends AppCompatActivity {
 
             private ImageView iv1;
