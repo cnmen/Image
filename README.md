@@ -6,11 +6,8 @@
 
 ### 1.AndroidManifest.xml add permissions：
 ```xml
-<!-- 访问网络权限 -->
 <uses-permission android:name="android.permission.INTERNET" />
-<!-- 往sdcard中写入数据的权限 -->
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<!-- 读取sdcard权限，可选 -->
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 ```
 
@@ -37,20 +34,20 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv4;
     private ImageView iv5;
 
-    // 图片来源于网络http
+    // from net
     String httpUri = "http://g.hiphotos.baidu.com/image/pic/item/0823dd54564e92589f2fe1019882d158cdbf4ec1.jpg";
 
-    // 图片来源于Content provider
+    // from Content Provider
     String contentprividerUrl = "content://media/external/audio/albumart/13";
 
-    // 图片来源于assets
+    // from assets
     String assetsUrl = ImageDownloader.Scheme.ASSETS.wrap("splash.png"); // "assets://image.png";
 
-    // 图片来源于本地资源res
+    // from resources
     String drawableUrl = ImageDownloader.Scheme.DRAWABLE.wrap("" + R.drawable.footer_user_select); //"drawable://" + R.drawable.image;
     // "drawable://" + R.drawable.footer_user_select
 
-    // 图片来源于SDCard
+    // from SDCard
     String sdcardUri = "file:///mnt/sdcard/simon.jpg"; // from SD card
 
     @Override
@@ -60,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         initView();
         // display();
 
-        // 在GridView，ListView停止滑动的时候加载当前界面的图片(实例，触摸滑动是否暂停，飞滑是否暂停)
         // listView.setOnScrollListener(new PauseOnScrollListener(imageLoaderBiz, pauseOnScroll, pauseOnFling));
         // gridView.setOnScrollListener(new PauseOnScrollListener(imageLoaderBiz, pauseOnScroll, pauseOnFling));
     }
@@ -80,24 +76,24 @@ public class MainActivity extends AppCompatActivity {
         ImageLoaderBiz.with().from(sdcardUri).into(iv5).display();
     }
 
-    public void clearMemory() { // 清除内存缓存
+    public void clearMemory() {
         ImageLoader.getInstance().clearMemoryCache();
     }
 
-    public void clearDisk() { // 清除本地缓存
+    public void clearDisk() {
         ImageLoader.getInstance().clearDiskCache();
     }
 
     public void display() {
         ImageLoaderBiz.with()
-                .from(httpUri) // 图片路径
-                .into(iv1) // 显示控件
-                .resLoading(R.mipmap.ic_launcher) // 可不填
-                .resEmpty(R.mipmap.ic_launcher) // 可不填
-                .resFail(R.mipmap.ic_launcher) // 可不填
+                .from(httpUri)
+                .into(iv1)
+                .resLoading(R.mipmap.ic_launcher)
+                .resEmpty(R.mipmap.ic_launcher)
+                .resFail(R.mipmap.ic_launcher)
                 .options(ImageLoaderConfig.initDisplayOptions(R.mipmap.ic_launcher
-                        , R.mipmap.ic_launcher, R.mipmap.ic_launcher)) // 可不设置
-                .listener(new ImageLoadingListener() { // 可不监听
+                        , R.mipmap.ic_launcher, R.mipmap.ic_launcher))
+                .listener(new ImageLoadingListener() {
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
                         Log.e("onLoadingStarted", imageUri);
